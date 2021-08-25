@@ -15,6 +15,6 @@ namespace RestaurantAPI
             
         }
 
-        public DbSet<Plates> Plates { get; set; }
+        public DbSet<Plate> Plates { get; set; }
     }
 }

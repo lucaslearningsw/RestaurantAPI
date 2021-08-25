@@ -2,12 +2,12 @@
 
 namespace RestaurantAPI.Migrations
 {
-    public partial class AddPlatesToDb : Migration
+    public partial class addPlateToDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Plates",
+                name: "Plate",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -25,7 +25,7 @@ namespace RestaurantAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Plates");
+                name: "Plate");
         }
     }
 }

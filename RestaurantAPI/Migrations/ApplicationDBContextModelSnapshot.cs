@@ -18,7 +18,7 @@ namespace RestaurantAPI.Migrations
                 .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("RestaurantAPI.Models.Plates", b =>
+            modelBuilder.Entity("RestaurantAPI.Models.Plate", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()

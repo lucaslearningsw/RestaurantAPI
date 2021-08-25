@@ -9,8 +9,8 @@ using RestaurantAPI;
 namespace RestaurantAPI.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20210824002218_AddPlatesToDb")]
-    partial class AddPlatesToDb
+    [Migration("20210825183214_addPlateToDB")]
+    partial class addPlateToDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,7 +20,7 @@ namespace RestaurantAPI.Migrations
                 .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("RestaurantAPI.Models.Plates", b =>
+            modelBuilder.Entity("RestaurantAPI.Models.Plate", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()

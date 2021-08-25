@@ -13,5 +13,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Data\Migrations\" />
+  </ItemGroup>
+
 
 </Project>
