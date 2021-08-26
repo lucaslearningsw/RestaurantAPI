@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RestaurantAPI.Repository;
 using RestaurantAPI.Repository.IRepository;
+using RestaurantAPI.RestaurantMapper;
 
 namespace RestaurantAPI
 {
@@ -32,6 +33,7 @@ namespace RestaurantAPI
                 (options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionLocal")));
 
             services.AddScoped<IPlatesRepository, PlatesRepository>();
+            services.AddAutoMapper(typeof(RestaurantMappings));
             services.AddControllers();
         }
 
