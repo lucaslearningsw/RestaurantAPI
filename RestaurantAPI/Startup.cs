@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using RestaurantAPI.Repository;
 using RestaurantAPI.Repository.IRepository;
 using RestaurantAPI.RestaurantMapper;
@@ -34,6 +35,15 @@ namespace RestaurantAPI
 
             services.AddScoped<IPlatesRepository, PlatesRepository>();
             services.AddAutoMapper(typeof(RestaurantMappings));
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("RestaurantAPISpec",
+                    new  OpenApiInfo()
+                    {
+                        Title = "RestaurantAPI",
+                        Version = "1"
+                    });
+            });
             services.AddControllers();
         }
 
@@ -46,7 +56,7 @@ namespace RestaurantAPI
             }
 
             app.UseHttpsRedirection();
-
+            app.UseSwagger();
             app.UseRouting();
 
             app.UseAuthorization();

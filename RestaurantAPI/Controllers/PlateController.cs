@@ -52,6 +52,7 @@ namespace RestaurantAPI.Controllers
 
         }
 
+        [HttpPost]
         public IActionResult CreatePlate([FromBody] PlateDto plateDto)
         {
             if (plateDto is null)
