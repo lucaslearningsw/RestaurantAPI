@@ -18,7 +18,7 @@ namespace RestaurantAPI.Repository
         }
         public ICollection<Plate> GetPlates()
         {
-            return _db.Plates.OrderBy(a => a.Name).ToList();
+            return _db.Plates.OrderBy(a => a.Price).ToList();
         }
 
         public Plate GetPlate(int plateId)
@@ -29,7 +29,7 @@ namespace RestaurantAPI.Repository
         public bool PlateExists(string name)
         {
             bool value = _db.Plates.Any(a => a.Name.ToLower().Trim() == name.ToLower().Trim());
-            return value; 
+            return value;
         }
 
         public bool PlateExists(int id)

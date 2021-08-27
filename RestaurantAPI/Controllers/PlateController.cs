@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using RestaurantAPI.Models.Dtos;
 using RestaurantAPI.Repository.IRepository;
 
 namespace RestaurantAPI.Controllers
@@ -26,7 +27,14 @@ namespace RestaurantAPI.Controllers
         public IActionResult GetPlates()
         {
             var objList = _plateRepo.GetPlates();
-            return Ok(objList);
+
+            var objDto = new List<PlateDto>();
+
+            foreach (var plate in objList)
+            {
+                objDto.Add(_mapper.Map<PlateDto>(plate));
+            }
+            return Ok(objDto);
         }
     }
 }

@@ -33,12 +33,12 @@ namespace RestaurantAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("Price")
-                        .HasColumnType("real");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("id");
 
-                    b.ToTable("Plates");
+                    b.ToTable("Plate");
                 });
 #pragma warning restore 612, 618
         }

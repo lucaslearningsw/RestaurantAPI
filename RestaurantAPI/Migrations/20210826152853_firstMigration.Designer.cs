@@ -9,8 +9,8 @@ using RestaurantAPI;
 namespace RestaurantAPI.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20210825183214_addPlateToDB")]
-    partial class addPlateToDB
+    [Migration("20210826152853_firstMigration")]
+    partial class firstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,12 +35,12 @@ namespace RestaurantAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("Price")
-                        .HasColumnType("real");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("id");
 
-                    b.ToTable("Plates");
+                    b.ToTable("Plate");
                 });
 #pragma warning restore 612, 618
         }
