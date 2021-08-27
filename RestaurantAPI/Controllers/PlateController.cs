@@ -26,15 +26,37 @@ namespace RestaurantAPI.Controllers
         [HttpGet]
         public IActionResult GetPlates()
         {
-            var objList = _plateRepo.GetPlates();
+            var PlateList = _plateRepo.GetPlates();
 
-            var objDto = new List<PlateDto>();
+            var plateDto = new List<PlateDto>();
 
-            foreach (var plate in objList)
+            foreach (var plate in PlateList)
             {
-                objDto.Add(_mapper.Map<PlateDto>(plate));
+                plateDto.Add(_mapper.Map<PlateDto>(plate));
             }
-            return Ok(objDto);
+            return Ok(plateDto);
         }
+
+        [HttpGet("{plateId:int}")]
+        public IActionResult GetPlateById(int plateId)
+        {
+            var plate = _plateRepo.GetPlate(plateId);
+            if (plate is null)
+            {
+                return NotFound();
+            }
+
+            var plateDto = _mapper.Map<PlateDto>(plate);
+            return Ok(plateDto);
+
+        }
+
+
+
+
+
+
+
+
     }
 }
