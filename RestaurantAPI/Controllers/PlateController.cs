@@ -38,7 +38,7 @@ namespace RestaurantAPI.Controllers
             return Ok(plateDto);
         }
 
-        [HttpGet("{plateId:int}")]
+        [HttpGet("{plateId:int}", Name = "GetPlate")]
         public IActionResult GetPlateById(int plateId)
         {
             var plate = _plateRepo.GetPlate(plateId);
@@ -63,12 +63,9 @@ namespace RestaurantAPI.Controllers
             if (_plateRepo.PlateExists(plateDto.Name))
             {
                 ModelState.AddModelError("", "Plate already Exists!");
+                return StatusCode(404, ModelState);
             }
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
             var plateObj = _mapper.Map<Plate>(plateDto);
 
@@ -78,7 +75,26 @@ namespace RestaurantAPI.Controllers
                 return StatusCode(500,ModelState);
             }
 
-            return Ok(plateObj);
+            return CreatedAtRoute("GetPlate", new {plateId = plateObj.id}, plateObj);
+        }
+
+        [HttpPatch("{plateId:int}", Name = "UpdatePlate")]
+        public IActionResult UpdatePlate(int plateId, [FromBody] PlateDto plateDto)
+        {
+            if (plateDto == null || plateId != plateDto.id)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var plateObj = _mapper.Map<Plate>(plateDto);
+
+            if (!_plateRepo.UpdatePlate(plateObj))
+            {
+                ModelState.AddModelError("", $"Error when update record {plateObj.Name}");
+                return StatusCode(500, ModelState);
+            }
+
+            return NoContent();
         }
 
 
