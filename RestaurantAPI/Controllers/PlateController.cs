@@ -97,6 +97,26 @@ namespace RestaurantAPI.Controllers
             return NoContent();
         }
 
+        [HttpDelete("{plateId:int}", Name = "DeletePlate")]
+        public ActionResult DeletePlate(int plateId)
+        {
+            if (!_plateRepo.PlateExists(plateId))
+            {
+                return NotFound();
+            }
+
+            var plateObj = _plateRepo.GetPlate(plateId);
+            if (!_plateRepo.DeletePlate(plateObj))
+            {
+                ModelState.AddModelError("", $"Error when deleting record {plateObj.Name}");
+                return StatusCode(500, ModelState);
+            }
+
+            return NoContent();
+
+
+        }
+
 
 
 
