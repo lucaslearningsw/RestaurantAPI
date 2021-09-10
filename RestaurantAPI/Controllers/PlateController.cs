@@ -15,7 +15,7 @@ namespace RestaurantAPI.Controllers
     [ApiController]
     public class PlateController : Controller
     {
-        private  IPlatesRepository _plateRepo;
+        private  readonly IPlatesRepository _plateRepo;
         private readonly IMapper _mapper;
 
         public PlateController(IPlatesRepository plateRepo, IMapper mapper)
@@ -24,6 +24,10 @@ namespace RestaurantAPI.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Get list of all plates
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult GetPlates()
         {
@@ -37,7 +41,12 @@ namespace RestaurantAPI.Controllers
             }
             return Ok(plateDto);
         }
-
+            
+        /// <summary>
+        /// Get individual plate
+        /// </summary>
+        /// <param name="plateId">Id of Plate</param>
+        /// <returns></returns>
         [HttpGet("{plateId:int}", Name = "GetPlate")]
         public IActionResult GetPlateById(int plateId)
         {
@@ -116,13 +125,6 @@ namespace RestaurantAPI.Controllers
 
 
         }
-
-
-
-
-
-
-
 
     }
 }

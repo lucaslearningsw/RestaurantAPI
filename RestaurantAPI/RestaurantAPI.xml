@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RestaurantAPI</name>
+    </assembly>
+    <members>
+        <member name="M:RestaurantAPI.Controllers.PlateController.GetPlates">
+            <summary>
+            Get list of all plates
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RestaurantAPI.Controllers.PlateController.GetPlateById(System.Int32)">
+            <summary>
+            Get individual plate
+            </summary>
+            <param name="plateId">Id of Plate</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
